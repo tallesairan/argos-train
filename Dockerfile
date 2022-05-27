@@ -1,5 +1,4 @@
 FROM nvidia/cuda:11.2.2-devel-ubuntu20.04
-
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update
