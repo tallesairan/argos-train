@@ -20,6 +20,8 @@ settings.CACHE_PATH.mkdir(exist_ok=True)
 # Fix Oversize
 MAX_DATA_SIZE = 998185 * (10 ** 7)
 
+# bypass source target check for testing
+#assert not settings.SOURCE_PATH.is_file() and not settings.TARGET_PATH.is_file()
 
 from_code = input("From code (ISO 639): ")
 to_code = input("To code (ISO 639): ")
@@ -97,20 +99,11 @@ metadata_json = json.dumps(metadata, indent=4)
 with open(settings.RUN_PATH / "metadata.json", "w") as metadata_file:
     metadata_file.write(metadata_json)
 
-# Download and write data source and target
-"""
-while len(datasets) > 0:
-    dataset = datasets.pop()
-    print(str(dataset))
-    source, target = dataset.data()
-    del dataset
-"""
+ 
 
-#argostrain.data.prepare_data(settings.SOURCE_PATH, settings.TARGET_PATH)
+argostrain.data.prepare_data(settings.SOURCE_PATH, settings.TARGET_PATH)
 
-print(f"Init OpenNMT with {settings.RUN_PATH}")
-
-
+ 
 # TODO: Don't hardcode vocab_size and set user_defined_symbols
 subprocess.run(
     [
@@ -118,28 +111,27 @@ subprocess.run(
         "--input=run/split_data/all.txt",
         "--model_prefix=run/sentencepiece",
         "--vocab_size=100000",
-        "--num_threads=100",
+        "--num_threads=110",
         "--character_coverage=0.9995",
         "--input_sentence_size=30481078",
         "--shuffle_input_sentence=true",
     ]
 )
-
+#bypasss this for faster testings
 #subprocess.run(["rm", "run/split_data/all.txt"])
 
-#subprocess.run(["onmt_build_vocab", "-config", "config.yml", "-n_sample", "-1", "-num_threads 100"])
+subprocess.run(["onmt_build_vocab", "-config", "config.yml", "-n_sample", "-1", "--num_threads", "110"])
 
-#subprocess.run(["onmt_train", "-config", "config.yml"])
+subprocess.run(["onmt_train", "-config", "config.yml", "--num_threads", "110"])
 
 
 # Package
-"""
 subprocess.run(
     [
         "./../OpenNMT-py/tools/average_models.py",
         "-m",
-        "run/openmt.model_step_9000.pt",
-        "run/openmt.model_step_10000.pt",
+        "run/openmt.model_step_29000.pt",
+        "run/openmt.model_step_30000.pt",
         "-o",
         "run/averaged.pt",
     ]
@@ -209,4 +201,3 @@ print(latest_checkpoint.name)
 print(latest_checkpoint.num)
 
 print(f"Package saved to {str(package_path.resolve())}")
-"""

@@ -131,7 +131,7 @@ subprocess.run(
         "--input=run/split_data/all.txt",
         "--model_prefix=run/sentencepiece",
         "--vocab_size=100000",
-        "--num_threads=64",
+        "--num_threads=110",
         "--character_coverage=0.9995",
         "--input_sentence_size=700000",
         "--shuffle_input_sentence=true",
@@ -140,9 +140,9 @@ subprocess.run(
 
 subprocess.run(["rm", "run/split_data/all.txt"])
 
-subprocess.run(["onmt_build_vocab", "-config", "config.yml", "-n_sample", "-1"])
+subprocess.run(["onmt_build_vocab", "-config", "config.yml", "-n_sample", "-1", "--num_threads", "110"])
 
-subprocess.run(["onmt_train", "-config", "config.yml"])
+subprocess.run(["onmt_train", "-config", "config.yml", "--num_threads", "110"])
 
 
 # Package
@@ -150,8 +150,8 @@ subprocess.run(
     [
         "./../OpenNMT-py/tools/average_models.py",
         "-m",
-        "run/openmt.model_step_9000.pt",
-        "run/openmt.model_step_10000.pt",
+        "run/openmt.model_step_19000.pt",
+        "run/openmt.model_step_20000.pt",
         "-o",
         "run/averaged.pt",
     ]

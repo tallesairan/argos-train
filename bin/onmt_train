@@ -20,12 +20,87 @@ settings.CACHE_PATH.mkdir(exist_ok=True)
 # Fix Oversize
 MAX_DATA_SIZE = 998185 * (10 ** 7)
 
+from_code = input("From code (ISO 639): ")
+to_code = input("To code (ISO 639): ")
+from_name = input("From name: ")
+to_name = input("To name: ")
+version = input("Version: ")
+package_version = version
+argos_version = "1.5"
+
+available_datasets = get_available_datasets()
+
+datasets = list(
+    filter(
+        lambda x: x.from_code == from_code and x.to_code == to_code, available_datasets
+    )
+)
+
+if len(datasets) == 0:
+    # Try to use reverse data
+    reverse_datasets = list(
+        filter(
+            lambda x: x.to_code == from_code and x.from_code == to_code,
+            available_datasets,
+        )
+    )
+    if len(reverse_datasets) > 0:
+        for reverse_dataset in reverse_datasets:
+            dataset = Dataset(reverse_dataset.data()[1], reverse_dataset.data()[0])
+
+            # Hack to preserve reference metadata
+            dataset.reference = reverse_dataset.reference
+            dataset.size = reverse_dataset.size
+
+            datasets.append(dataset)
+    else:
+        print("No data available for this language pair, check data-index.json")
+        sys.exit(1)
+
+# Limit max amount of data used
+limited_datasets = list()
+limited_datasets_size = 0
+datasets.sort(key=lambda x: x.size)
+for dataset in datasets:
+    if limited_datasets_size + dataset.size < MAX_DATA_SIZE:
+        limited_datasets.append(dataset)
+        limited_datasets_size += dataset.size
+    else:
+        print(f"Excluding data {str(dataset)}, over MAX_DATA_SIZE")
+datasets = limited_datasets
+
+# Check for existing checkpoints
+checkpoints = opennmtutils.get_checkpoints()
+if len(checkpoints) > 0:
+    input("Warning: Checkpoints exist (enter to continue)")
+
+# Generate README.md
+readme = f"# {from_name}-{to_name}"
+with open(Path("MODEL_README.md")) as readme_template:
+    readme += "".join(readme_template.readlines())
+    for dataset in datasets:
+        readme += dataset.reference + "\n\n"
+with open(settings.RUN_PATH / "README.md", "w") as readme_file:
+    readme_file.write(readme)
+
+# Generate metadata.json
+metadata = {
+    "package_version": package_version,
+    "argos_version": argos_version,
+    "from_code": from_code,
+    "from_name": from_name,
+    "to_code": to_code,
+    "to_name": to_name,
+}
+metadata_json = json.dumps(metadata, indent=4)
+with open(settings.RUN_PATH / "metadata.json", "w") as metadata_file:
+    metadata_file.write(metadata_json)
 
 #subprocess.run(["rm", "run/split_data/all.txt"])
 
-subprocess.run(["onmt_build_vocab", "-config", "config.yml", "-n_sample",  "-1","-num_threads 120"])
+#subprocess.run(["onmt_build_vocab", "-config", "config.yml", "-n_sample", "-1", "--num_threads", "110"])
 
-subprocess.run(["onmt_train", "-config", "config.yml"])
+subprocess.run(["onmt_train", "-config", "config.yml", "--num_threads", "110"])
 
 
 # Package
@@ -33,8 +108,8 @@ subprocess.run(
     [
         "./../OpenNMT-py/tools/average_models.py",
         "-m",
-        "run/openmt.model_step_10000.pt",
-        "run/openmt.model_step_20000.pt",
+        "run/openmt.model_step_29000.pt",
+        "run/openmt.model_step_30000.pt",
         "-o",
         "run/averaged.pt",
     ]
@@ -53,7 +128,7 @@ subprocess.run(
 )
 
 package_version = '1.2'
-package_version_code = package_version.replace(".", "_")/
+package_version_code = package_version.replace(".", "_")
 model_dir = f"translate-{from_code}_{to_code}-{package_version_code}"
 model_path = Path("run") / model_dir
 
