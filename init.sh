@@ -1,7 +1,9 @@
-apt-get install virtualenv nano
+apt-get install -y virtualenv nano
 su argosopentech
 cd ~/
 ./argos-train-init
 source ~/env/bin/activate
-export CUDA_VISIBLE_DEVICES=0,1
 cd ~/argos-train
+
+screen -S argos-train
+export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7

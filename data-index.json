@@ -1,5 +1,17 @@
 [
     {
+        "name": "CCMatrix", 
+        "size": 409061333,
+        "type": "data",
+        "from_code": "en",
+        "to_code": "es",
+     
+        "reference": "CCMATRIX",
+        "links": [
+            "https://bv2-eu.videoscdn.online/moses/data-ccmatrix-release-en_es.argosdata"
+        ]
+    },
+    {
         "name": "CCAligned",
         "type": "data",
         "from_code": "en",
