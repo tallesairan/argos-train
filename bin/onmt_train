@@ -98,11 +98,10 @@ with open(settings.RUN_PATH / "metadata.json", "w") as metadata_file:
 
 #subprocess.run(["rm", "run/split_data/all.txt"])
 
-#subprocess.run(["onmt_build_vocab", "-config", "config.yml", "-n_sample", "-1", "--num_threads", "110"])
+subprocess.run(["onmt_build_vocab", "-config", "config.yml", "-n_sample", "-1", "--num_threads", "110"])
 
-subprocess.run(["onmt_train", "-config", "config.yml", "--num_threads", "110"])
-
-
+# subprocess.run(["onmt_train", "-config", "config.yml", "--num_threads", "110"])
+"""
 # Package
 subprocess.run(
     [
@@ -179,3 +178,4 @@ print(latest_checkpoint.name)
 print(latest_checkpoint.num)
 
 print(f"Package saved to {str(package_path.resolve())}")
+"""

@@ -1,0 +1,8 @@
+{
+    "name": "Wikipedia",
+    "type": "data",
+    "from_code": "en",
+    "to_code": "es",
+    "size": 1811428,
+    "reference": "Wikipedia"
+}

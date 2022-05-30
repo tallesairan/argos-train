@@ -1,6 +1,6 @@
 FROM nvidia/cuda:11.2.2-devel-ubuntu20.04
 ARG DEBIAN_FRONTEND=noninteractive
-
+ENV CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
 RUN apt-get update
 RUN apt-get install -y sudo
 
@@ -14,4 +14,3 @@ RUN chmod 774 /home/argosopentech/argos-train-init
 
 # Disable tmux for vast.ai
 RUN touch /root/.no_auto_tmux
-

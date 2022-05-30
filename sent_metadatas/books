@@ -1,0 +1,8 @@
+{
+    "name": "books",
+    "type": "data",
+    "from_code": "en",
+    "to_code": "es",
+    "size": 93470,
+    "reference": "books"
+}

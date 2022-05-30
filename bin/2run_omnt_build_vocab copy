@@ -20,9 +20,6 @@ settings.CACHE_PATH.mkdir(exist_ok=True)
 # Fix Oversize
 MAX_DATA_SIZE = 998185 * (10 ** 7)
 
-# bypass source target check for testing
-#assert not settings.SOURCE_PATH.is_file() and not settings.TARGET_PATH.is_file()
-
 from_code = input("From code (ISO 639): ")
 to_code = input("To code (ISO 639): ")
 from_name = input("From name: ")
@@ -30,6 +27,8 @@ to_name = input("To name: ")
 version = input("Version: ")
 package_version = version
 argos_version = "1.5"
+
+ 
 
 available_datasets = get_available_datasets()
 
@@ -98,12 +97,12 @@ metadata = {
 metadata_json = json.dumps(metadata, indent=4)
 with open(settings.RUN_PATH / "metadata.json", "w") as metadata_file:
     metadata_file.write(metadata_json)
+    
+    
+# subprocess.run(["onmt_build_vocab", "-config", "config.yml", "-n_sample", "-1", "--num_threads", "110"])
 
- 
 
-argostrain.data.prepare_data(settings.SOURCE_PATH, settings.TARGET_PATH)
 
- 
 # TODO: Don't hardcode vocab_size and set user_defined_symbols
 subprocess.run(
     [
@@ -113,17 +112,14 @@ subprocess.run(
         "--vocab_size=100000",
         "--num_threads=110",
         "--character_coverage=0.9995",
-        "--input_sentence_size=50481078",
+        "--input_sentence_size=700000",
         "--shuffle_input_sentence=true",
     ]
 )
 
-
 """
-#bypasss this for faster testings
-#subprocess.run(["rm", "run/split_data/all.txt"])
+ 
 
-subprocess.run(["onmt_build_vocab", "-config", "config.yml", "-n_sample", "-1", "--num_threads", "110"])
 
 subprocess.run(["onmt_train", "-config", "config.yml", "--num_threads", "110"])
 
@@ -152,7 +148,7 @@ subprocess.run(
     ]
 )
 
-
+package_version = '1.2'
 package_version_code = package_version.replace(".", "_")
 model_dir = f"translate-{from_code}_{to_code}-{package_version_code}"
 model_path = Path("run") / model_dir

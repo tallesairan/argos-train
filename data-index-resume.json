@@ -1,0 +1,60 @@
+[
+ 
+    {
+        "name": "opensubtitles",
+        "type": "data",
+        "from_code": "en",
+        "to_code": "es",
+        "size": 48303352,
+        "reference": "OpenSubititles",
+        "links": [
+            "file://home/argosopentech/argostrain/run/cache/opensubtitles-en_es.argosdata"
+        ]
+    },
+    
+    {
+        "name": "wikipedia",
+        "type": "data",
+        "from_code": "en",
+        "to_code": "es",
+        "size": 1811428,
+        "reference": "wikipedia",
+        "links": [
+            "file://home/argosopentech/argostrain/run/cache/wikipedia-en_es.argosdata"
+        ]
+    },
+    {
+        "name": "tatoeba",
+        "type": "data",
+        "from_code": "en",
+        "to_code": "es",
+        "size": 217927,
+        "reference": "tatoeba",
+        "links": [
+            "file://home/argosopentech/argostrain/run/cache/tatoeba-en_es.argosdata"
+        ]
+    },
+    {
+        "name": "books",
+        "type": "data",
+        "from_code": "en",
+        "to_code": "es",
+        "size": 5215515,
+        "reference": "books",
+        "links": [
+            "file://home/argosopentech/argostrain/run/cache/books-en_es.argosdata"
+        ]
+    },
+    {
+        "name": "scielo",
+        "type": "data",
+        "from_code": "en",
+        "to_code": "es",
+        "size": 433695,
+        "reference": "scielo",
+        "links": [
+            "file://home/argosopentech/argostrain/run/cache/scielo-en_es.argosdata"
+        ]
+    }
+
+]
