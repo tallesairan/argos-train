@@ -9,7 +9,10 @@ tgt_vocab: run/opennmt_data/openmt.vocab
 
 # Should match the vocab size for SentencePiece
 # https://forum.opennmt.net/t/opennmt-py-error-when-training-with-large-amount-of-data/4310/12?u=argosopentech
+src_vocab_size: 50000
+tgt_vocab_size: 50000
 
+share_vocab: True
 
 # Corpus opts:
 data:
@@ -42,23 +45,15 @@ skip_empty_level: silent
 # General opts
 save_model: run/openmt.model
 save_checkpoint_steps: 1000
-valid_steps: 2000
-train_steps: 30000
+valid_steps: 5000
+train_steps: 10000
 early_stopping: 4
-share_vocab: true
-
-src_vocab_size: 100000
-tgt_vocab_size: 100000
-
 
 # Batching
-##
 queue_size: 10000
 bucket_size: 32768
-#set based on gpu size 2 => 2 gpus
-world_size: 8
-#system gpu ids - on nvidia run nvidia-smi to see ids
-gpu_ranks: [0,1,2,3,4,5,6,7]
+world_size: 1
+gpu_ranks: [0]
 batch_type: "tokens"
 batch_size: 4096
 valid_batch_size: 4096

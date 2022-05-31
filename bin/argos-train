@@ -5,6 +5,7 @@ import json
 import subprocess
 import shutil
 import sys
+
 import argostrain
 from argostrain.dataset import *
 from argostrain import data
@@ -16,9 +17,7 @@ import stanza
 settings.RUN_PATH.mkdir(exist_ok=True)
 settings.CACHE_PATH.mkdir(exist_ok=True)
 
- 
-# Fix Oversize
-MAX_DATA_SIZE = 998185 * (10 ** 7)
+MAX_DATA_SIZE = 5 * (10 ** 7)
 
 assert not settings.SOURCE_PATH.is_file() and not settings.TARGET_PATH.is_file()
 
@@ -130,20 +129,18 @@ subprocess.run(
         "spm_train",
         "--input=run/split_data/all.txt",
         "--model_prefix=run/sentencepiece",
-        "--vocab_size=100000",
-        "--num_threads=110",
+        "--vocab_size=50000",
         "--character_coverage=0.9995",
-        "--input_sentence_size=90700000",
+        "--input_sentence_size=1000000",
         "--shuffle_input_sentence=true",
-        "--train_extremely_large_corpus=true",
     ]
 )
 
 #subprocess.run(["rm", "run/split_data/all.txt"])
 
-subprocess.run(["onmt_build_vocab", "-config", "config.yml", "-n_sample", "-1", "--num_threads", "110"])
+subprocess.run(["onmt_build_vocab", "-config", "config.yml", "-n_sample", "-1"])
 
-subprocess.run(["onmt_train", "-config", "config.yml", "--num_threads", "110"])
+subprocess.run(["onmt_train", "-config", "config.yml"])
 
 
 # Package
@@ -151,8 +148,8 @@ subprocess.run(
     [
         "./../OpenNMT-py/tools/average_models.py",
         "-m",
-        "run/openmt.model_step_29000.pt",
-        "run/openmt.model_step_30000.pt",
+        "run/openmt.model_step_9000.pt",
+        "run/openmt.model_step_10000.pt",
         "-o",
         "run/averaged.pt",
     ]
