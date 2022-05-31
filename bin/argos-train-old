@@ -9,20 +9,21 @@ echo "Training tokenizer"
 
 cat run/split_data/*train.txt >> run/split_data/all.txt
 
-
-spm_train --input=run/split_data/all.txt --model_prefix=run/sentencepiece --vocab_size=100000 --num_threads=110 --character_coverage=0.9995 --input_sentence_size=50481078 --shuffle_input_sentence=true
-
-
+ 
 spm_train --input=run/split_data/all.txt --model_prefix=run/sentencepiece \
            --vocab_size=$vocab_size --character_coverage=$character_coverage \
-	   --input_sentence_size=1000000 --shuffle_input_sentence=true \
+	   --input_sentence_size=50481078 --shuffle_input_sentence=true \
 	   --user_defined_symbols=$special_tokens
 
 rm run/split_data/all.txt
+ 
 
-onmt_build_vocab -config config.yml -n_sample -1
+onmt_build_vocab -config config.yml -n_sample -1 --num_threads 125
 
 echo "Done with tokenization"
 
-onmt_train -config config.yml
+#onmt_train  -config config.yml --num_threads 120 -update_vocab all -train_from run/openmt.model_step_30000.pt
+
+
+onmt_train -config config.yml --num_threads 120
 

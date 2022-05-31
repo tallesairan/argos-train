@@ -23,7 +23,7 @@ wc -l $slug/source
 
 echo "Enter to continue"
 read
-vim $slug/metadata.json
+nano $slug/metadata.json
 zip -r $slug.argosdata $slug
 
 

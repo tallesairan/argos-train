@@ -43,7 +43,7 @@ skip_empty_level: silent
 save_model: run/openmt.model
 save_checkpoint_steps: 1000
 valid_steps: 2000
-train_steps: 30000
+train_steps: 70000
 early_stopping: 4
 share_vocab: true
 
@@ -61,7 +61,7 @@ world_size: 8
 gpu_ranks: [0,1,2,3,4,5,6,7]
 batch_type: "tokens"
 batch_size: 4096
-valid_batch_size: 8
+valid_batch_size: 4096
 max_generator_batches: 2
 accum_count: [4]
 accum_steps: [0]
