@@ -39,11 +39,3 @@ b2 upload-file --info model=1.2 --threads 2 AIMODELS /home/argosopentech/argostr
 b2 upload-file --info model=1.2 --threads 2 AIMODELS /home/argosopentech/argostrain/run/openmt.model_step_30000.pt v2/checkpoints/openmt.model_step_30000.pt
 
 
-
-
-keyID:
-003529bf1cc5ba10000000003
-keyName:
-aimodes
-applicationKey:
-K003WGKEp1sdm5Gno/dZCm1QytzPhRA
