@@ -133,12 +133,13 @@ subprocess.run(
         "--vocab_size=100000",
         "--num_threads=110",
         "--character_coverage=0.9995",
-        "--input_sentence_size=700000",
+        "--input_sentence_size=90700000",
         "--shuffle_input_sentence=true",
+        "--train_extremely_large_corpus=true",
     ]
 )
 
-subprocess.run(["rm", "run/split_data/all.txt"])
+#subprocess.run(["rm", "run/split_data/all.txt"])
 
 subprocess.run(["onmt_build_vocab", "-config", "config.yml", "-n_sample", "-1", "--num_threads", "110"])
 
@@ -150,8 +151,8 @@ subprocess.run(
     [
         "./../OpenNMT-py/tools/average_models.py",
         "-m",
-        "run/openmt.model_step_19000.pt",
-        "run/openmt.model_step_20000.pt",
+        "run/openmt.model_step_29000.pt",
+        "run/openmt.model_step_30000.pt",
         "-o",
         "run/averaged.pt",
     ]

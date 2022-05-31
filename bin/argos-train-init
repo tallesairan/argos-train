@@ -34,7 +34,7 @@ sudo ldconfig -v
 
 # Setup .bashrc
 echo 'source ~/env/bin/activate' >> ~/.bashrc
-echo 'export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7' >> ~/env/bin/activate
+echo 'export CUDA_VISIBLE_DEVICES=0,1,2,3' >> ~/env/bin/activate
 source ~/env/bin/activate
 cd ~/argos-train
 

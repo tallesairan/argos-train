@@ -1,6 +1,6 @@
 FROM nvidia/cuda:11.2.2-devel-ubuntu20.04
 ARG DEBIAN_FRONTEND=noninteractive
-ENV CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
+ENV CUDA_VISIBLE_DEVICES=0,1,2,3
 RUN apt-get update
 RUN apt-get install -y sudo
 

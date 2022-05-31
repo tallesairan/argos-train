@@ -43,7 +43,7 @@ skip_empty_level: silent
 save_model: run/openmt.model
 save_checkpoint_steps: 1000
 valid_steps: 2000
-train_steps: 70000
+train_steps: 60000
 early_stopping: 4
 share_vocab: true
 
@@ -56,9 +56,9 @@ tgt_vocab_size: 100000
 queue_size: 10000
 bucket_size: 32768
 #set based on gpu size 2 => 2 gpus
-world_size: 8
+world_size: 4
 #system gpu ids - on nvidia run nvidia-smi to see ids
-gpu_ranks: [0,1,2,3,4,5,6,7]
+gpu_ranks: [0,1,2,3]
 batch_type: "tokens"
 batch_size: 4096
 valid_batch_size: 4096

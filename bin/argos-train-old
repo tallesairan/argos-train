@@ -22,6 +22,8 @@ onmt_build_vocab -config config.yml -n_sample -1 --num_threads 125
 
 echo "Done with tokenization"
 
+
+# Resume train
 #onmt_train  -config config.yml --num_threads 120 -update_vocab all -train_from run/openmt.model_step_30000.pt
 
 
