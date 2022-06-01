@@ -112,7 +112,7 @@ while len(datasets) > 0:
         t.writelines(target)
 
     del dataset
-"""
+
 
  
 argostrain.data.prepare_data(settings.SOURCE_PATH, settings.TARGET_PATH)
@@ -124,7 +124,7 @@ with open(Path("run/split_data/all.txt"), "w") as combined:
     with open(Path("run/split_data/tgt-train.txt")) as tgt:
         for line in tgt:
             combined.write(line)
-
+"""
 # TODO: Don't hardcode vocab_size and set user_defined_symbols
 subprocess.run(
     [
