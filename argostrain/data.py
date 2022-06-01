@@ -3,7 +3,6 @@ import os
 import argparse
 import random
 from functools import partial
-
 import argostrain
 from argostrain.dataset import *
 
@@ -41,3 +40,5 @@ def prepare_data(source_data, target_data):
     target_train_file.close()
 
     print("Done splitting data")
+
+

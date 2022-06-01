@@ -18,7 +18,7 @@ git clone https://github.com/OpenNMT/OpenNMT-py.git --depth 1 ~/OpenNMT-py
 ~/env/bin/pip install torch==1.9.0+cu111 -f https://download.pytorch.org/whl/torch_stable.html
 
 cd
-sudo apt-get install cmake build-essential pkg-config libgoogle-perftools-dev vim git -y
+sudo apt-get install libgoogle-perftools-dev -y
 git clone https://github.com/google/sentencepiece.git --depth 1 ~/sentencepiece
 cd sentencepiece
 mkdir build

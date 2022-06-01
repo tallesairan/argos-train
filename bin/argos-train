@@ -5,6 +5,7 @@ import json
 import subprocess
 import shutil
 import sys
+from concurrent.futures import ThreadPoolExecutor
 
 import argostrain
 from argostrain.dataset import *
@@ -96,6 +97,7 @@ metadata = {
 metadata_json = json.dumps(metadata, indent=4)
 with open(settings.RUN_PATH / "metadata.json", "w") as metadata_file:
     metadata_file.write(metadata_json)
+"""
 
 # Download and write data source and target
 while len(datasets) > 0:
@@ -110,8 +112,9 @@ while len(datasets) > 0:
         t.writelines(target)
 
     del dataset
+"""
 
-
+ 
 argostrain.data.prepare_data(settings.SOURCE_PATH, settings.TARGET_PATH)
 
 with open(Path("run/split_data/all.txt"), "w") as combined:
