@@ -132,15 +132,16 @@ subprocess.run(
         "--vocab_size=50000",
         "--character_coverage=0.9995",
         "--input_sentence_size=1000000",
+        "--threads=15",
         "--shuffle_input_sentence=true",
     ]
 )
 
 #subprocess.run(["rm", "run/split_data/all.txt"])
 
-subprocess.run(["onmt_build_vocab", "-config", "config.yml", "-n_sample", "-1"])
+subprocess.run(["onmt_build_vocab", "-config", "config.yml", "-n_sample", "-1", "-threads", "15"])
 
-subprocess.run(["onmt_train", "-config", "config.yml"])
+subprocess.run(["onmt_train", "-config", "config.yml", "-threads", "15"])
 
 
 # Package
