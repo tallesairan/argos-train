@@ -124,7 +124,7 @@ with open(Path("run/split_data/all.txt"), "w") as combined:
     with open(Path("run/split_data/tgt-train.txt")) as tgt:
         for line in tgt:
             combined.write(line)
-"""
+
 # TODO: Don't hardcode vocab_size and set user_defined_symbols
 subprocess.run(
     [
@@ -140,13 +140,14 @@ subprocess.run(
 )
 """
 
+
 #subprocess.run(["rm", "run/split_data/all.txt"])
 
 subprocess.run(["onmt_build_vocab", "-config", "config.yml", "-n_sample", "-1", "-threads", "15"])
 
 subprocess.run(["onmt_train", "-config", "config.yml", "-threads", "15"])
 
-
+"""
 # Package
 subprocess.run(
     [
