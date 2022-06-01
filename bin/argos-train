@@ -17,7 +17,7 @@ import stanza
 settings.RUN_PATH.mkdir(exist_ok=True)
 settings.CACHE_PATH.mkdir(exist_ok=True)
 
-MAX_DATA_SIZE = 5 * (10 ** 7)
+MAX_DATA_SIZE = 11 * (10 ** 7)
 
 assert not settings.SOURCE_PATH.is_file() and not settings.TARGET_PATH.is_file()
 
@@ -121,7 +121,7 @@ with open(Path("run/split_data/all.txt"), "w") as combined:
     with open(Path("run/split_data/tgt-train.txt")) as tgt:
         for line in tgt:
             combined.write(line)
-
+"""
 
 # TODO: Don't hardcode vocab_size and set user_defined_symbols
 subprocess.run(
@@ -220,3 +220,5 @@ print(latest_checkpoint.name)
 print(latest_checkpoint.num)
 
 print(f"Package saved to {str(package_path.resolve())}")
+
+"""
