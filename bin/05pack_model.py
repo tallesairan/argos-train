@@ -36,8 +36,8 @@ subprocess.run(
     [
         "./../OpenNMT-py/tools/average_models.py",
         "-m",
-        "run/openmt.model_step_49000.pt",
-        "run/openmt.model_step_50000.pt",
+        "run/openmt.model_step_7000.pt",
+        "run/openmt.model_step_8000.pt",
         "-o",
         "run/averaged.pt",
     ]

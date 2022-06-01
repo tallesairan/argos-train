@@ -27,5 +27,5 @@ echo "Done with tokenization"
 #onmt_train  -config config.yml --num_threads 120 -update_vocab all -train_from run/openmt.model_step_30000.pt
 
 
-onmt_train -config config.yml --num_threads 120
+onmt_train -config config.yml --num_threads 19
 
