@@ -112,7 +112,7 @@ subprocess.run(
         "--vocab_size=100000",
         "--num_threads=110",
         "--character_coverage=0.9995",
-        "--input_sentence_size=700000",
+        "--input_sentence_size=9600000",
         "--shuffle_input_sentence=true",
     ]
 )

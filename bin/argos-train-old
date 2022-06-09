@@ -24,8 +24,14 @@ echo "Done with tokenization"
 
 
 # Resume train
-#onmt_train  -config config.yml --num_threads 120 -update_vocab all -train_from run/openmt.model_step_30000.pt
+#onmt_train  -config config.yml --num_threads 19 -train_steps 8001 -update_vocab none -train_from run/openmt.model_step_8000.pt
 
 
 onmt_train -config config.yml --num_threads 19
 
+
+
+#./../OpenNMT-py/tools/average_models.py -m  run/openmt.model_step_7000.pt   run/openmt.model_step_8000.pt -o run/averaged.pt
+
+
+#ct2-opennmt-py-converter --model_path run/averaged.pt --output_dir run/model --quantization int8

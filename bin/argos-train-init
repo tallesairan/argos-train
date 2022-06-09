@@ -14,6 +14,11 @@ git clone https://github.com/OpenNMT/OpenNMT-py.git --depth 1 ~/OpenNMT-py
 ~/env/bin/pip install -e ~/OpenNMT-py
 ~/env/bin/pip install -r ~/OpenNMT-py/requirements.opt.txt
 
+
+git clone https://github.com/OpenNMT/OpenNMT-tf.git --depth 1 ~/OpenNMT-tf
+~/env/bin/pip install -e ~/OpenNMT-tf
+
+
 ~/env/bin/pip uninstall -y torch
 ~/env/bin/pip install torch==1.9.0+cu111 -f https://download.pytorch.org/whl/torch_stable.html
 

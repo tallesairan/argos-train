@@ -18,7 +18,7 @@ import stanza
 settings.RUN_PATH.mkdir(exist_ok=True)
 settings.CACHE_PATH.mkdir(exist_ok=True)
 
-MAX_DATA_SIZE = 11 * (10 ** 7)
+MAX_DATA_SIZE = 960002 * (10 ** 7)
 
 #assert not settings.SOURCE_PATH.is_file() and not settings.TARGET_PATH.is_file()
 
@@ -133,7 +133,7 @@ subprocess.run(
         "--model_prefix=run/sentencepiece",
         "--vocab_size=50000",
         "--character_coverage=0.9995",
-        "--input_sentence_size=1000000",
+        "--input_sentence_size=9600000",
         "--num_threads=19",
         "--shuffle_input_sentence=true",
     ]

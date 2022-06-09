@@ -98,7 +98,7 @@ metadata_json = json.dumps(metadata, indent=4)
 with open(settings.RUN_PATH / "metadata.json", "w") as metadata_file:
     metadata_file.write(metadata_json)
     
-subprocess.run(["onmt_train", "-config", "config.yml", "--num_threads", "110"])
+subprocess.run(["onmt_train", "-config", "config.yml", "--num_threads", "18"])
     
 
 

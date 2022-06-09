@@ -31,7 +31,7 @@ version = input("Version: ")
 package_version = version
 argos_version = "1.5"
 
-
+"""
 subprocess.run(
     [
         "./../OpenNMT-py/tools/average_models.py",
@@ -54,6 +54,7 @@ subprocess.run(
         "int8",
     ]
 )
+"""
 
 package_version = '1.2'
 
