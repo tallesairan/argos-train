@@ -115,6 +115,8 @@
         "type": "data",
         "from_code": "pt",
         "to_code": "en",
+        "reference": "",
+
         "size": 2461558,
         "links": [
             "https://bv2-eu.videoscdn.online/moses/data-wikimatrix-pt_en.argosdata"
@@ -126,6 +128,8 @@
         "from_code": "pt",
         "to_code": "en",
         "size": 233407,
+        "reference": "",
+
         "links": [
             "https://bv2-eu.videoscdn.online/moses/data-datasourcefinal-pt_en.argosdata"
         ]
