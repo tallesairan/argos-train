@@ -9,8 +9,8 @@ tgt_vocab: run/opennmt_data/openmt.vocab
 
 # Should match the vocab size for SentencePiece
 # https://forum.opennmt.net/t/opennmt-py-error-when-training-with-large-amount-of-data/4310/12?u=argosopentech
-src_vocab_size: 50000
-tgt_vocab_size: 50000
+src_vocab_size: 100000
+tgt_vocab_size: 100000
 
 share_vocab: True
 
