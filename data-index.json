@@ -1,5 +1,17 @@
 [
     {
+        "name": "CCMatrix", 
+        "size": 409061333,
+        "type": "data",
+        "from_code": "en",
+        "to_code": "es",
+     
+        "reference": "CCMATRIX",
+        "links": [
+            "https://bv2-eu.videoscdn.online/moses/data-ccmatrix-release-en_es.argosdata"
+        ]
+    },
+    {
         "name": "CCAligned",
         "type": "data",
         "from_code": "en",
@@ -52,6 +64,70 @@
         "reference": "",
         "links": [
             "https://bv2-eu.videoscdn.online/moses/data-wikimatrix-en_es.argosdata"
+        ]
+    },
+    {
+        "name": "EMEA",
+        "type": "data",
+        "from_code": "pt",
+        "to_code": "en",
+        "size": 1082144,
+        "reference": "",
+        "links": [
+            "https://bv2-eu.videoscdn.online/moses/data-EMEA-pt_en.argosdata"
+        ]
+    },
+    {
+        "name": "CAPES",
+        "type": "data",
+        "from_code": "pt",
+        "to_code": "en",
+        "size": 1157610,
+        "reference": "",
+        "links": [
+            "https://bv2-eu.videoscdn.online/moses/data-CAPES-pt_en.argosdata"
+        ]
+    },
+    {
+        "name": "scielo",
+        "type": "data",
+        "from_code": "pt",
+        "to_code": "en",
+        "size": 3084830,
+        "reference": "",
+        "links": [
+            "https://bv2-eu.videoscdn.online/moses/data-scielo-pt_en.argosdata"
+        ]
+    },
+    {
+        "name": "jrc",
+        "type": "data",
+        "from_code": "pt",
+        "to_code": "en",
+        "size": 1635860,
+        "reference": "",
+        "links": [
+            "https://bv2-eu.videoscdn.online/moses/data-jrc-pt_en.argosdata"
+        ]
+    },
+    {
+        "name": "WikiMatrix",
+        "type": "data",
+        "from_code": "pt",
+        "to_code": "en",
+        "size": 2461558,
+        "links": [
+            "https://bv2-eu.videoscdn.online/moses/data-wikimatrix-pt_en.argosdata"
+        ]
+    },
+    {
+        "name": "DataSourceFinal",
+        "type": "data",
+        "from_code": "pt",
+        "to_code": "en",
+        "size": 233407,
+        "links": [
+            "https://bv2-eu.videoscdn.online/moses/data-datasourcefinal-pt_en.argosdata"
         ]
     }
 
