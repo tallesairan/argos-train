@@ -97,7 +97,6 @@ metadata = {
 metadata_json = json.dumps(metadata, indent=4)
 with open(settings.RUN_PATH / "metadata.json", "w") as metadata_file:
     metadata_file.write(metadata_json)
-"""
 
 # Download and write data source and target
 while len(datasets) > 0:
@@ -131,14 +130,14 @@ subprocess.run(
         "spm_train",
         "--input=run/split_data/all.txt",
         "--model_prefix=run/sentencepiece",
-        "--vocab_size=50000",
+        "--vocab_size=100000",
         "--character_coverage=0.9995",
         "--input_sentence_size=9600000",
-        "--num_threads=19",
+        "--num_threads=15",
         "--shuffle_input_sentence=true",
+        "--train_extremely_large_corpus=true"
     ]
 )
-"""
 
 
 #subprocess.run(["rm", "run/split_data/all.txt"])
@@ -147,7 +146,6 @@ subprocess.run(["onmt_build_vocab", "-config", "config.yml", "-n_sample", "-1", 
 
 subprocess.run(["onmt_train", "-config", "config.yml", "-threads", "15"])
 
-"""
 # Package
 subprocess.run(
     [
@@ -224,5 +222,3 @@ print(latest_checkpoint.name)
 print(latest_checkpoint.num)
 
 print(f"Package saved to {str(package_path.resolve())}")
-
-"""
