@@ -31,6 +31,7 @@ version = input("Version: ")
 package_version = version
 argos_version = "1.5"
 
+"""
 subprocess.run(
     [
         "./../OpenNMT-py/tools/average_models.py",
@@ -53,14 +54,23 @@ subprocess.run(
         "int8",
     ]
 )
- 
+"""
+
 package_version = '1.2'
 
 package_version_code = package_version.replace(".", "_")
 model_dir = f"translate-{from_code}_{to_code}-{package_version_code}"
 model_path = Path("run") / model_dir
 
+subprocess.run(["mkdir", model_path])
 
+subprocess.run(["cp", "-r", "run/model", model_path])
+
+subprocess.run(["cp", "run/sentencepiece.model", model_path])
+
+# Include a Stanza sentence boundary detection model
+stanza_model_located = False
+stanza_lang_code = from_code
 # Include a Stanza sentence boundary detection model
 stanza_model_located = False
 stanza_lang_code = from_code

@@ -14,14 +14,11 @@ git clone https://github.com/OpenNMT/OpenNMT-py.git --depth 1 ~/OpenNMT-py
 ~/env/bin/pip install -e ~/OpenNMT-py
 ~/env/bin/pip install -r ~/OpenNMT-py/requirements.opt.txt
 
-
- 
-
 ~/env/bin/pip uninstall -y torch
 ~/env/bin/pip install torch==1.9.0+cu111 -f https://download.pytorch.org/whl/torch_stable.html
 
 cd
-sudo apt-get install libgoogle-perftools-dev -y
+sudo apt-get install cmake build-essential pkg-config libgoogle-perftools-dev vim git -y
 git clone https://github.com/google/sentencepiece.git --depth 1 ~/sentencepiece
 cd sentencepiece
 mkdir build
@@ -33,7 +30,7 @@ sudo ldconfig -v
 
 # Setup .bashrc
 echo 'source ~/env/bin/activate' >> ~/.bashrc
-echo 'export CUDA_VISIBLE_DEVICES=0,1' >> ~/env/bin/activate
+echo 'export CUDA_VISIBLE_DEVICES=0,1,2,3' >> ~/env/bin/activate
 source ~/env/bin/activate
 cd ~/argos-train
 
